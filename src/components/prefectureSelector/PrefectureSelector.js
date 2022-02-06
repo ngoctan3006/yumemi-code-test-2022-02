@@ -15,7 +15,9 @@ const PrefectureSelector = () => {
                         <input
                             type='checkbox'
                             id={pref.prefCode}
-                            checked={prefsChecked.includes(pref.prefCode)}
+                            checked={prefsChecked.find(
+                                (el) => el.prefCode === pref.prefCode
+                            )}
                             onChange={() => handleCheck(pref.prefCode)}
                         />
                         <label

@@ -9,17 +9,24 @@ const prefectureReducer = (state, action) => {
                 prefs: payload
             };
         case SET_PREF_CHECK:
-            if (state.prefsChecked.includes(payload)) {
+            const isExist = state.prefsChecked.find(
+                (el) => el.prefCode === payload.prefCode
+            );
+            if (isExist) {
                 return {
                     ...state,
                     prefsChecked: state.prefsChecked.filter(
-                        (el) => el !== payload
+                        (el) => el.prefCode !== payload.prefCode
                     )
                 };
             } else {
+                const { prefCode, name, value, year } = payload;
                 return {
                     ...state,
-                    prefsChecked: [...state.prefsChecked, payload]
+                    prefsChecked: [
+                        ...state.prefsChecked,
+                        { prefCode, name, data: value, year }
+                    ]
                 };
             }
 
