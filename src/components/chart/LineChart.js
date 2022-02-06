@@ -26,13 +26,22 @@ const LineChart = () => {
                 curve: 'smooth'
             },
             legend: {
-                position: 'top'
+                position: 'right'
             },
             grid: {
                 show: false
             },
             xaxis: {
-                categories: data[0] ? data[0].year : []
+                categories: data[0] ? data[0].year : [],
+                title: {
+                    text: '年度'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: '人口数',
+                    rotate: -90
+                }
             }
         }
     });
